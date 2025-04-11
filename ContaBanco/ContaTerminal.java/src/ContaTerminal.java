@@ -16,6 +16,7 @@ public class ContaTerminal {
         double saldo = scanner.nextDouble(); // Lê valor decimal
 
         System.out.printf("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é %d e seu saldo %.2f já está disponível para saque. \n", nome, numeroAgencia, saldo);
+        
         scanner.close();
     }
 }
