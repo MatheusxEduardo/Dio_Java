@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-
         List<Ninja> ninjas = new ArrayList<>();
         ninjas.add(new Ninja("Naruto", "Konoha", 14));
         ninjas.add(new Ninja("Sasuke", "Konoha", 16));
@@ -13,14 +14,14 @@ public class Main {
         ninjas.add(new Ninja("Temari", "Suna", 16));
         ninjas.add(new Ninja("Zabuza", "Nevoa", 32));
 
-        ninjas.stream()
-                .filter(ninja -> ninja.getAldeia().equals("Nevoa"))
-                .forEach(System.out::println);
+        List<Ninja> ninjasOrdenados = ninjas.stream()
+                .sorted((n1,n2) -> n1.getNome().compareTo(n2.getNome()))
+                .collect(Collectors.toList());
+        ninjasOrdenados.forEach(System.out::println);
 
         ninjas.stream()
-                .sorted((n1, n2) -> Integer.compare(n1.getIdade(), n2.getIdade()))
+                .map(Ninja::getNome)
                 .forEach(System.out::println);
-
 
     }
 }
